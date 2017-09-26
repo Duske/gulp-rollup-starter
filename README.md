@@ -6,6 +6,11 @@ The following configuration will be shown:
 * gulp (inc. sourcemaps), rollup, babel, requiring modules
 
 ### gulp (inc. sourcemaps), rollup 
+To get started install gulp along with rollup and sourcemaps:
+`npm i gulp rollup-stream vinyl-source-stream vinyl-buffer gulp-sourcemaps --save-dev`
+
+Your gulpfile can now look like this. You can extend the `rollupJS()` with additional transforms like gulp-rename for example.
+Simply add these steps after `.pipe(sourcemaps.init({loadMaps: true}))`.
 ```
 const gulp = require('gulp');
 const rollup = require('rollup-stream');
@@ -48,6 +53,10 @@ gulp.task('rollup', rollupJS('main.js', {
 ```
 
 ### gulp (inc. sourcemaps), rollup, babel
+Install the following modules to combine babel with rollup:
+`npm i rollup-plugin-babel babel-preset-es2015 babel-plugin-external-helpers --save-dev`
+
+Then you add this code and adjust the `rollupJS()` function.
 ```
 // require the babel plugin
 const babel = require('rollup-plugin-babel');
@@ -96,7 +105,11 @@ const rollupJS = (inputFile, options) => {
 }
 ```
 
-### gulp (inc. sourcemaps), rollup, babel
+### gulp (inc. sourcemaps), rollup, babel, requiring modules
+Add the following dependencies to be able to require modules from node_modules:
+`npm i rollup-plugin-commonjs rollup-plugin-node-resolve --save-dev`
+
+Adjust your gulpfile like this:
 ```
 const commonJs = require('rollup-plugin-commonjs');
 const resolveNodeModules = require('rollup-plugin-node-resolve');
